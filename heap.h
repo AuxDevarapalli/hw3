@@ -157,7 +157,6 @@ void Heap<T,PComparator>::pop()
   store_[store_.size()-1]=tempyFirst;
   store_.pop_back();
   heapify(0);
-  //store_.pop_back();
 }
 template <typename T,typename PComparator> void Heap<T,PComparator>::heapify(size_t val){
   if((x_*val+1)>=store_.size()){//or do i do val>=0
@@ -168,13 +167,16 @@ template <typename T,typename PComparator> void Heap<T,PComparator>::heapify(siz
   size_t end=x_*val+x_;
   if((end)>=store_.size()){
     end=store_.size()-1;
+  }
+  //if((end)>=store_.size()){
+    //end=store_.size()-1;
     for(size_t i=low+1;i<=end;i++){
       if(comparator_(store_[i],store_[low])){
         //
         low=i;
       }
     }
-  }
+  //}
   if(comparator_(store_[low],store_[val])){
     T tempyFirst=store_[val];
     T tempyLast=store_[low];

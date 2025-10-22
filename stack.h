@@ -9,7 +9,7 @@ template <typename T>
 //im thinking private because we want the user to
 //think of them as different and use them separeatly
 //with no connection between them
-class Stack:private vector<T>
+class Stack:private std::vector<T>
 {
 public:
     Stack();
@@ -27,17 +27,17 @@ Stack<T>::Stack(){
   //nothing eneded?
 }
 template <typename T>
-Stack,T>::~Stack(){
+Stack<T>::~Stack(){
   //nothign need
 }
 template<typename T>
-bool Stack<T>::empty(){
+bool Stack<T>::empty() const{
   //chceck slides if i should do vector or this
   return (std::vector<T>::empty());
 }
 template<typename T>
-size_t Stack<T>::size(){
-  size_t t=vector<T>::size();
+size_t Stack<T>::size() const{
+  size_t t=std::vector<T>::size();
   return t;
 }
 template<typename T>
@@ -52,7 +52,7 @@ void Stack<T>::pop(){
   std::vector<T>::pop_back();
 }
 template <typename T>
-T const & top() const{
+T const & Stack<T>::top() const{
   if(std::vector<T>::empty()){
     throw(std::underflow_error("stack is empty"));
   }
